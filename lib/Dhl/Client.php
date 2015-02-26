@@ -58,6 +58,12 @@ class Client {
         
         $result = $this->soapClient->createShipment($arguments);
         
+        if (!isset($result->createShipmentsResult)) {
+            $this->errorMessages[] = $result->faultstring;
+            
+            return false;
+        }
+        
         return $result;
     }
     
