@@ -50,6 +50,17 @@ class Client {
         return ShipmentBasicDataFactory::createFromStdObject($result->createShipmentsResult->item);
     }
     
+    public function createShipment($shipment) {
+        $arguments = array(
+            'authData' => $this->authData->toArray(),
+            'shipment' => $shipment
+        );
+        
+        $result = $this->soapClient->createShipment($arguments);
+        
+        return $result;
+    }
+    
     /**
      * getLastResponse : just for debug
      * @return void
