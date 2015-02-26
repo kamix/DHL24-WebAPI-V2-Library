@@ -58,13 +58,16 @@ class Client {
         
         $result = $this->soapClient->createShipment($arguments);
         
-        if (!isset($result->createShipmentsResult)) {
+        if (!isset($result->createShipmentResult)) {
             $this->errorMessages[] = $result->faultstring;
             
             return false;
         }
         
-        return $result;
+        $response = new Structure\ShipmentBasicData;
+        $response->setShipmentId($result->createShipmentResult->shipmentNotificationNumber);
+        
+        return $response;
     }
     
     /**
