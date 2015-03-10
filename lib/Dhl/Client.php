@@ -357,6 +357,7 @@ class Client {
         $response->exTimeAvailableFrom = $exTimeAvailableFrom;
         $response->exTimeAvailableTo = $exTimeAvailableTo;
         $response->deliverySaturday = (boolean) $result->getPostalCodeServicesResult->deliverySaturday;
+        $response->pickupOnSaturday = (boolean) $result->getPostalCodeServicesResult->pickupOnSaturday;
         
         return $response;
     }
